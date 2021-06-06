@@ -7,9 +7,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/JoseEvangelistaCucho/mod/controller"
-	"github.com/JoseEvangelistaCucho/mod/utils"
 	"github.com/gorilla/mux"
+	"github.com/ivan061294/golang-test/controller"
+	"github.com/ivan061294/golang-test/utils"
 )
 
 func CORS(next http.Handler) http.Handler {
@@ -28,6 +28,10 @@ func CORS(next http.Handler) http.Handler {
 func main() {
 	router := mux.NewRouter()
 	router.Handle("/api/v1/PostArray", http.HandlerFunc(controller.EntitiesArray)).Methods("POST")
+	router.Handle("/api/v1/PostArray", http.HandlerFunc(controller.EntitiesArrayGet)).Methods("GET")
+	router.Handle("/api/v1/PostArray", http.HandlerFunc(controller.EntitiesArrayGet)).Methods("PUT")
+	router.Handle("/api/v1/PostArray", http.HandlerFunc(controller.EntitiesArrayGet)).Methods("DELETE")
+	router.Handle("/", http.HandlerFunc(controller.EntitiesArrayGet)).Methods("GET")
 
 	spa := utils.SpaHandler{StaticPath: "public", IndexPath: "index.html"}
 	router.PathPrefix("/").Handler(spa)

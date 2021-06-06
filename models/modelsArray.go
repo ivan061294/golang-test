@@ -1,7 +1,7 @@
 package models
 
 type ArrayNum struct {
-	ValorArray [][]int `json:"valorArray"`
+	ValorArray [][]int `json:"valorArrayOutput"`
 }
 type Response struct {
 	Code    int         `json:"code"`
@@ -9,5 +9,5 @@ type Response struct {
 	Data    interface{} `json:"data,omitempty"`
 }
 type ArrayNumRotate struct {
-	ValorArrayRotate [][]int `json:"valorArrayRotate90"`
+	ValorArrayRotate [][]int `json:"valorArrayImput"`
 }

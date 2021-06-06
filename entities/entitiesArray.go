@@ -1,7 +1,7 @@
 package entities
 
 import (
-	"github.com/JoseEvangelistaCucho/mod/models"
+	"github.com/ivan061294/golang-test/models"
 )
 
 type ArrayEntities models.ArrayNum
@@ -15,8 +15,29 @@ func (c *ArrayEntities) Rotate9() (r Response) {
 	nmatriz := len(m)
 	n := len(m[0])
 	if nmatriz != n {
+		if nmatriz > n {
+			r.Code = 1
+			r.Message = "El numero de campos no es igual a los campos array"
+			return r
+		}
+		if nmatriz < n {
+			r.Code = 1
+			r.Message = "El numero de array no es igual a los campos "
+			return r
+		}
+
 		r.Code = 1
-		r.Message = "El numero de campos no es igual a los campos array"
+		r.Message = "Ha Ocurrido Un Error interno"
+		return r
+	}
+	if nmatriz < n {
+		r.Code = 1
+		r.Message = "El numero de campos no es igual a los campos array ejm NxN"
+		return r
+	}
+	if nmatriz > n {
+		r.Code = 1
+		r.Message = "El numero de array no es igual a los campos ejm NxN"
 		return r
 	}
 	a = make([][]int, n) // Crea la nueva "matriz"
@@ -34,8 +55,15 @@ func (c *ArrayEntities) Rotate9() (r Response) {
 	var ar models.ArrayNumRotate
 	ar.ValorArrayRotate = append(ar.ValorArrayRotate, a...)
 	r.Code = 0
-	r.Message = "Procesado Con Exito"
+	r.Message = "Procesado Con Éxito"
 	r.Data = ar
 
 	return r
+}
+func (response Response) ResponseAll() (r Response) {
+
+	response.Code = 1
+	response.Message = "Este no es un tipo de Petición Valida. " +
+		"La Petición es de tipo POST y la uri es"
+	return response
 }

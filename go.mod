@@ -1,4 +1,4 @@
-module github.com/JoseEvangelistaCucho/mod
+module github.com/ivan061294/golang-test
 
 go 1.16
 

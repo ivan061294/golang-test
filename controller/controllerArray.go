@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/JoseEvangelistaCucho/mod/entities"
+	"github.com/ivan061294/golang-test/entities"
 )
 
 func EntitiesArray(w http.ResponseWriter, r *http.Request) {
@@ -17,5 +17,12 @@ func EntitiesArray(w http.ResponseWriter, r *http.Request) {
 	}
 	defer r.Body.Close()
 	DatosArray := array.Rotate9()
+	json.NewEncoder(w).Encode(DatosArray)
+}
+func EntitiesArrayGet(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	var res entities.Response
+	DatosArray := res.ResponseAll()
 	json.NewEncoder(w).Encode(DatosArray)
 }
