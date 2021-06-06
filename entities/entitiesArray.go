@@ -64,6 +64,6 @@ func (response Response) ResponseAll() (r Response) {
 
 	response.Code = 1
 	response.Message = "Este no es un tipo de Petición Valida. " +
-		"La Petición es de tipo POST y la uri es"
+		"La Petición es de tipo POST y la uri es  https://mi-test-golang-gaspar-juan.herokuapp.com/api/v1/PostArray"
 	return response
 }
